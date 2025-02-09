@@ -11,7 +11,9 @@ function App() {
           const { latitude, longitude } = position.coords;
           setCoords([latitude, longitude]);
         },
-        (err) => console.error(err)
+
+        (err) => console.error(err),
+        { enableHighAccuracy: true }
       );
       console.log("can get location..");
     } else {
@@ -37,10 +39,11 @@ function App() {
 
   useEffect(() => getCoords(), []);
   return (
-    <>
+    <div>
       <h1>Location App</h1>
+      {JSON.stringify(location)}
       <button onClick={getLocation}>get location</button>
-    </>
+    </div>
   );
 }
 
